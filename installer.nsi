@@ -1,4 +1,4 @@
-OutFile "obs-multi-rtmp-setup.exe"
+OutFile "obs-multistream-setup.exe"
 
 Unicode true
 RequestExecutionLevel user
@@ -7,14 +7,14 @@ SetDatablockOptimize on
 SetCompress auto
 SetCompressor /SOLID lzma
 
-Name "obs-multi-rtmp"
-Caption "Multiple RTMP Output Plugin for OBS Studio"
+Name "OBS-Multistream"
+Caption "Multi RTMP Output Plugin for OBS Studio"
 Icon "${NSISDIR}\Contrib\Graphics\Icons\win-install.ico"
 
 Var /Global DefInstDir
 Function .onInit
     ReadEnvStr $0 "ALLUSERSPROFILE"
-    StrCpy $DefInstDir "$0\obs-studio\plugins\obs-multi-rtmp"
+    StrCpy $DefInstDir "$0\obs-studio\plugins\obs-multistream"
     StrCpy $INSTDIR "$DefInstDir"
 
     IfFileExists "$DefInstDir\*.*" AskUninst DontAskUninst
@@ -41,13 +41,13 @@ Page instfiles
 
 Section
 SetOutPath "$INSTDIR\bin\64bit"
-File "release\RelWithDebInfo\obs-plugins\64bit\obs-multi-rtmp.dll"
-File "release\RelWithDebInfo\obs-plugins\64bit\obs-multi-rtmp.pdb"
+File "release\RelWithDebInfo\obs-plugins\64bit\obs-multistream.dll"
+File "release\RelWithDebInfo\obs-plugins\64bit\obs-multistream.pdb"
 
 SetOutPath "$INSTDIR\data\locale"
-File "release\RelWithDebInfo\data\obs-plugins\obs-multi-rtmp\locale\*.ini"
+File "release\RelWithDebInfo\data\obs-plugins\obs-multistream\locale\*.ini"
 SectionEnd
 
 Section "Uninstaller"
-RMDir /r /REBOOTOK "$INSTDIR\plugins\obs-multi-rtmp"
+RMDir /r /REBOOTOK "$INSTDIR\plugins\obs-multistream"
 SectionEnd
